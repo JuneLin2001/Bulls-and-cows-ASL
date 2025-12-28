@@ -1,8 +1,8 @@
 const HowToPlay = () => {
   return (
-    <div className="bg-gray-900 rounded-xl p-6 border border-gray-800 shadow-xl">
-      <h3 className="text-xl font-bold mb-4 text-gray-300">How to Play</h3>
-      <ul className="space-y-2 text-gray-400 text-sm">
+    <div className="rounded-xl border border-gray-800 bg-gray-900 p-6 shadow-xl">
+      <h3 className="mb-4 text-xl font-bold text-gray-300">How to Play</h3>
+      <ul className="space-y-2 text-sm text-gray-400">
         <li>
           • <strong className="text-gray-200">Goal:</strong> Guess the 4-digit
           secret code.
@@ -16,9 +16,16 @@ const HowToPlay = () => {
           in the wrong position.
         </li>
         <li>
-          • Use
-          <strong className="text-blue-400">ASL Hand Signs (0-9)</strong> to
-          input numbers via webcam.
+          • Use{" "}
+          <a
+            href="https://en.wikipedia.org/wiki/American_Sign_Language"
+            target="_blank"
+            rel="noreferrer"
+            className="text-blue-400"
+          >
+            ASL Hand Signs (0-9)
+          </a>{" "}
+          to input numbers via webcam or use keypad.
         </li>
         <li>• Hold a gesture steady to input the number.</li>
       </ul>

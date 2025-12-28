@@ -1,8 +1,10 @@
-import { useGameLogic } from "@/hooks/useGameLogic";
+import type { GuessResult } from "@/types/guess";
 
-const GuessedRow = () => {
-  const { guesses } = useGameLogic();
+interface GuessedRowProps {
+  guesses: GuessResult[];
+}
 
+const GuessedRow: React.FC<GuessedRowProps> = ({ guesses }) => {
   return (
     <div className="flex-1 overflow-y-auto space-y-2 mb-4 h-48 max-h-48 scrollbar-thin scrollbar-thumb-gray-700">
       {guesses.length === 0 && (

@@ -1,9 +1,18 @@
 import { LuDelete, LuSendHorizontal } from "react-icons/lu";
-import { useGameLogic } from "@/hooks/useGameLogic";
 
-const InputKeypad = () => {
-  const { currentGuess, submitGuess, appendDigit, backspace } = useGameLogic();
+interface InputKeypadProps {
+  currentGuess: string;
+  appendDigit: (digit: string) => void;
+  backspace: () => void;
+  submitGuess: () => void;
+}
 
+const InputKeypad: React.FC<InputKeypadProps> = ({
+  currentGuess,
+  appendDigit,
+  backspace,
+  submitGuess,
+}) => {
   return (
     <div className="grid grid-cols-3 gap-2">
       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (

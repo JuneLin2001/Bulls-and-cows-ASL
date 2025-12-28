@@ -42,7 +42,7 @@ export function useGameLogic() {
   const appendDigit = useCallback(
     (digit: string) => {
       if (gameState !== "playing") return;
-      if (currentGuess.includes(digit)) return; // Prevent duplicates
+      if (currentGuess.includes(digit)) return;
       if (currentGuess.length >= 4) return;
 
       setCurrentGuess((prev) => prev + digit);

@@ -1,12 +1,14 @@
-import { useGameLogic } from "@/hooks/useGameLogic";
-
 interface InputRowProps {
   lastDetectedGesture: string | null;
+  currentGuess: string;
+  error: string | null;
 }
 
-const InputRow: React.FC<InputRowProps> = ({ lastDetectedGesture }) => {
-  const { currentGuess, error } = useGameLogic();
-
+const InputRow: React.FC<InputRowProps> = ({
+  lastDetectedGesture,
+  currentGuess,
+  error,
+}) => {
   return (
     <div className="relative">
       <div className="text-center mb-2 h-6">

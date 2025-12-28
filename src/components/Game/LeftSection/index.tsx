@@ -22,7 +22,7 @@ const LeftSection: React.FC<LeftSectionProps> = ({ lastDetectedGesture }) => {
   return (
     <div className="space-y-6">
       <Header />
-      <div className="bg-gray-900 rounded-xl p-6 border border-gray-800 shadow-xl min-h-100 flex flex-col">
+      <div className="flex flex-col rounded-xl border border-gray-800 bg-gray-900 p-6 shadow-xl">
         <GuessedRow guesses={guesses} />
         <div className="mt-auto space-y-4">
           {gameState === "won" ? (

@@ -4,12 +4,12 @@ import RightSection from "./RightSection";
 
 const Game = () => {
   const [lastDetectedGesture, setLastDetectedGesture] = useState<string | null>(
-    null
+    null,
   );
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100 p-4 md:p-8 font-sans">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div className="min-h-screen bg-gray-950 p-4 font-sans text-gray-100 md:p-8">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-2">
         <LeftSection lastDetectedGesture={lastDetectedGesture} />
         <RightSection setLastDetectedGesture={setLastDetectedGesture} />
       </div>

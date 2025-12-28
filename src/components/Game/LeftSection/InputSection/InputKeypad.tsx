@@ -20,23 +20,22 @@ const InputKeypad: React.FC<InputKeypadProps> = ({
           key={num}
           onClick={() => appendDigit(num.toString())}
           disabled={currentGuess.includes(num.toString())}
-          className="p-4 bg-gray-800 hover:bg-gray-700 disabled:opacity-30 disabled:cursor-not-allowed rounded text-xl font-bold transition-colors"
+          className="rounded bg-gray-800 p-4 text-xl font-bold transition-colors hover:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-30"
         >
           {num}
         </button>
       ))}
       <button
         onClick={backspace}
-        className="p-4 bg-red-900/30 hover:bg-red-900/50 text-red-400 rounded flex items-center justify-center transition-colors"
+        className="flex items-center justify-center rounded bg-red-900/30 p-4 text-red-400 transition-colors hover:bg-red-900/50"
       >
         <LuDelete size={24} />
       </button>
       <button
         onClick={submitGuess}
-        disabled={currentGuess.length !== 4}
-        className="col-span-2 p-4 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed rounded flex items-center justify-center font-bold text-lg transition-colors"
+        className="flex items-center justify-center rounded bg-blue-600 p-4 text-lg font-bold transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
       >
-        Submit Guess <LuSendHorizontal size={20} className="ml-2" />
+        <LuSendHorizontal size={24} />
       </button>
     </div>
   );

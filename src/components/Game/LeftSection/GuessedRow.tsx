@@ -6,21 +6,25 @@ interface GuessedRowProps {
 
 const GuessedRow: React.FC<GuessedRowProps> = ({ guesses }) => {
   return (
-    <div className="flex-1 overflow-y-auto space-y-2 mb-4 h-48 max-h-48 scrollbar-thin scrollbar-thumb-gray-700">
+    <div className="mb-4 max-h-48 flex-1 space-y-2 overflow-y-auto">
       {guesses.length === 0 && (
-        <div className="text-center text-gray-500 py-10 italic">
+        <p className="py-10 text-center text-gray-500">
           Make a guess to start!
-        </div>
+        </p>
       )}
-      {guesses.map((g, i) => (
+      {guesses.map((guess, i) => (
         <div
           key={i}
-          className="flex items-center justify-between bg-gray-800/50 p-3 rounded border border-gray-700"
+          className="flex items-center justify-between rounded border border-gray-700 bg-gray-800/50 p-3"
         >
-          <span className="font-mono text-xl tracking-widest">{g.guess}</span>
+          <span className="font-mono text-xl tracking-widest">
+            {guess.guess}
+          </span>
           <div className="flex gap-4 text-sm">
-            <span className="text-green-400 font-bold">{g.bulls} Bulls</span>
-            <span className="text-yellow-400 font-bold">{g.cows} Cows</span>
+            <span className="font-bold text-green-400">
+              {guess.bulls} Bulls
+            </span>
+            <span className="font-bold text-yellow-400">{guess.cows} Cows</span>
           </div>
         </div>
       ))}

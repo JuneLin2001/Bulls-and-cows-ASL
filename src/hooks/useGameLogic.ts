@@ -48,7 +48,7 @@ export function useGameLogic() {
       setCurrentGuess((prev) => prev + digit);
       setError(null);
     },
-    [currentGuess, gameState]
+    [currentGuess, gameState],
   );
 
   const backspace = useCallback(() => {

@@ -30,7 +30,10 @@ export function useGameLogic() {
     const { cows, bulls } = checkGuess(secret, currentGuess);
     const newGuessResult: GuessResult = { guessed: currentGuess, cows, bulls };
 
-    setGuesses((prev) => [newGuessResult, ...prev]);
+    setGuesses((prev) => [
+      { ...newGuessResult, isLatest: true },
+      ...prev.map((guess) => ({ ...guess, isLatest: false })),
+    ]);
     setCurrentGuess("");
     setError(null);
 

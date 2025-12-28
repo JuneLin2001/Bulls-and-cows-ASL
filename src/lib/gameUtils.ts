@@ -11,10 +11,12 @@ export function generateSecret(): string {
 
 export function checkGuess(
   secret: string,
-  guess: string
+  guess: string,
 ): { cows: number; bulls: number } {
   let bulls = 0;
   let cows = 0;
+
+  console.log({ secret });
 
   if (guess.length !== 4) {
     throw new Error("Guess must be 4 digits");

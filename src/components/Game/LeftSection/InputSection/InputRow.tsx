@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import toast from "react-hot-toast";
+
 interface InputRowProps {
   lastDetectedGesture: string | null;
   currentGuess: string;
@@ -9,6 +12,12 @@ const InputRow: React.FC<InputRowProps> = ({
   currentGuess,
   error,
 }) => {
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
+
   return (
     <div className="relative">
       <div className="mb-2 h-6 text-center">
@@ -25,11 +34,6 @@ const InputRow: React.FC<InputRowProps> = ({
         className="w-full rounded-lg border-2 border-gray-700 bg-gray-950 p-4 text-center font-mono text-3xl tracking-[1em] transition-colors focus:border-blue-500 focus:outline-none data-error:border-red-500"
         placeholder="____"
       />
-      {error && (
-        <div className="absolute right-0 -bottom-6 left-0 text-center text-sm text-red-400">
-          {error}
-        </div>
-      )}
     </div>
   );
 };

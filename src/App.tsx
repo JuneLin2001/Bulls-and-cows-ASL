@@ -1,7 +1,13 @@
 import Game from "@/components/Game";
+import { Toaster } from "react-hot-toast";
 
 function App() {
-  return <Game />;
+  return (
+    <>
+      <Toaster />
+      <Game />
+    </>
+  );
 }
 
 export default App;

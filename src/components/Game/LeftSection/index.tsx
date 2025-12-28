@@ -26,7 +26,9 @@ const LeftSection: React.FC<LeftSectionProps> = ({ lastDetectedGesture }) => {
         <GuessedRow guesses={guesses} />
         <div className="mt-auto space-y-4">
           {gameState === "won" ? (
-            <GameResult />
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+              <GameResult />
+            </div>
           ) : (
             <InputSection
               lastDetectedGesture={lastDetectedGesture}

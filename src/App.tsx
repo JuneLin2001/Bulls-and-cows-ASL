@@ -1,9 +1,7 @@
+import Game from "@/components/Game";
+
 function App() {
-  return (
-    <>
-      <h1>Vite + React</h1>
-    </>
-  );
+  return <Game />;
 }
 
 export default App;

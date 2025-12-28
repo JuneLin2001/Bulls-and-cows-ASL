@@ -7,7 +7,8 @@ interface WebcamViewProps {
 }
 
 const WebcamView: React.FC<WebcamViewProps> = ({ onGestureDetected }) => {
-  const webcamRef = useRef<Webcam | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const webcamRef = useRef<any>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { prediction, isLoading, error } = useHandDetection(
     webcamRef,

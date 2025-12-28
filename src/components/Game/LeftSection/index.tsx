@@ -2,12 +2,13 @@ import { useGameLogic } from "@/hooks/useGameLogic";
 import Header from "@/components/Header";
 import GuessedRow from "./GuessedRow";
 import GameResult from "./GameResult";
+import InputSection from "./InputSection";
 
-interface InputSectionProps {
+interface LeftSectionProps {
   lastDetectedGesture: string | null;
 }
 
-const InputSection: React.FC<InputSectionProps> = ({ lastDetectedGesture }) => {
+const LeftSection: React.FC<LeftSectionProps> = ({ lastDetectedGesture }) => {
   const { gameState } = useGameLogic();
 
   return (
@@ -27,4 +28,4 @@ const InputSection: React.FC<InputSectionProps> = ({ lastDetectedGesture }) => {
   );
 };
 
-export default InputSection;
+export default LeftSection;

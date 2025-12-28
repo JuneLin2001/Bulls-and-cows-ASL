@@ -17,6 +17,7 @@ const LeftSection: React.FC<LeftSectionProps> = ({ lastDetectedGesture }) => {
     submitGuess,
     appendDigit,
     backspace,
+    resetGame,
   } = useGameLogic();
 
   return (
@@ -27,7 +28,7 @@ const LeftSection: React.FC<LeftSectionProps> = ({ lastDetectedGesture }) => {
         <div className="mt-auto space-y-4">
           {gameState === "won" ? (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-              <GameResult />
+              <GameResult resetGame={resetGame} />
             </div>
           ) : (
             <InputSection

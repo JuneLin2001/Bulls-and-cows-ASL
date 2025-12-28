@@ -28,7 +28,7 @@ export function useGameLogic() {
     }
 
     const { cows, bulls } = checkGuess(secret, currentGuess);
-    const newGuessResult: GuessResult = { guess: currentGuess, cows, bulls };
+    const newGuessResult: GuessResult = { guessed: currentGuess, cows, bulls };
 
     setGuesses((prev) => [newGuessResult, ...prev]);
     setCurrentGuess("");

@@ -1,5 +1,5 @@
 export type GuessResult = {
-  guess: string;
+  guessed: string;
   cows: number;
   bulls: number;
 };

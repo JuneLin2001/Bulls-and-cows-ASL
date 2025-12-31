@@ -11,6 +11,13 @@ ASL, or American Sign Language, is a complete, natural visual language used prim
 
 > Wikipedia: [American_Sign_Language](https://en.wikipedia.org/wiki/American_Sign_Language)
 
+#### How to sign numbers in ASL
+
+This is a tutorial from American Society for Deaf Children (ASDC).  
+Everyone can got it for free in their website.
+
+> [ASL numbers tutorial](https://deafchildren.org/2019/08/signing-numbers-in-asl)
+
 ## Tech Stack
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
@@ -94,4 +101,24 @@ npm run dev
 - For the game logic, I decided to use a 4-digit secret code. Because it's the most common game in the world. And it's also a classic mode for Bulls and Cows.
 - The reason I combined the game with ASL hand gesture recognition is because I want to make the game more interactive. And using Webcam is a good way to do it.
 - The player will never lose the game. Because I think it is a little bit hard. So the player can try infinity times.
-- I got ASL guild from American Society for Deaf Children (ASDC). They have [ASL numbers tutorial](https://deafchildren.org/2019/08/signing-numbers-in-asl) for free in their website.
+
+### How ASL Numbers 0–9 Are Distinguished in this Game
+
+I used `MediaPipe Hand Pose Detection`. It provides 21 hand landmarks, including the wrist and joints of each finger. See [`src/lib/gestureClassifier.ts`](/src/lib/gestureClassifier.ts) for details
+
+By analyzing the relative positions and distances between these landmarks, ASL number gestures from 0 to 9 can be classified using a rule-based approach.
+
+Simply said that it produces a binary state **(extended / not extended)** for each finger.
+
+#### ASL Numbers 0–9 Classification
+
+- `0` No fingers are extended. The thumb tip is close to the index fingertip, forming an “O” shape.
+- `1` Only the index finger is extended.
+- `2` Index and middle fingers are extended. The thumb is not extended.
+- `3` Thumb, index, and middle fingers are extended.
+- `4` Index, middle, ring, and pinky fingers are extended. The thumb remains folded.
+- `5` All fingers are extended.
+- `6` Thumb touches the pinky.
+- `7` Thumb touches the ring finger.
+- `8` Thumb touches the middle finger.
+- `9` Thumb touches the index finger.

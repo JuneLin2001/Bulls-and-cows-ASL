@@ -29,6 +29,8 @@ export function predictGesture(keypoints: Keypoint[]): string | null {
 
   const wrist = keypoints[0];
   const middleMcp = keypoints[9];
+  const indexMcp = keypoints[5];
+  const thumbMcp = keypoints[2];
 
   // Calculate hand scale (distance from wrist to middle MCP)
   const handScale = getDistance(wrist, middleMcp);
@@ -40,12 +42,23 @@ export function predictGesture(keypoints: Keypoint[]): string | null {
   const isRingExtended = ringTip.y < ringPip.y;
   const isPinkyExtended = pinkyTip.y < pinkyPip.y;
 
-  // Thumb extended check: tip is higher than IP (upright hand)
-  // OR tip is far from index MCP (x-axis)
-  // Let's stick to Y-axis for simplicity in "upright" pose, but ASL often has hand rotated.
-  // A better check for thumb extension might be distance from pinky MCP?
-  // Let's keep it simple for now.
-  const isThumbExtended = thumbTip.y < thumbIp.y;
+  // Thumb extended detection using multiple methods for accuracy:
+  // 1. Distance-based: thumb tip should be farther from index MCP than thumb IP when extended
+  const thumbTipToIndexMcp = getDistance(thumbTip, indexMcp);
+  const thumbIpToIndexMcp = getDistance(thumbIp, indexMcp);
+  const isThumbExtendedByDistance = thumbTipToIndexMcp > thumbIpToIndexMcp * 1.2;
+
+  // 2. Check if thumb is extended outward (away from palm center)
+  const thumbLength = getDistance(thumbTip, thumbMcp);
+  const thumbExtendedThreshold = handScale * 0.6;
+  const isThumbExtendedByLength = thumbLength > thumbExtendedThreshold;
+
+  // 3. Y-axis check for upright hands
+  const isThumbExtendedByY = thumbTip.y < thumbIp.y;
+
+  // Combine methods: extended if distance check passes AND (length OR Y-axis check)
+  const isThumbExtended =
+    isThumbExtendedByDistance && (isThumbExtendedByLength || isThumbExtendedByY);
 
   // ASL Numbers Logic
 
@@ -70,16 +83,6 @@ export function predictGesture(keypoints: Keypoint[]): string | null {
     return "1";
   }
 
-  // 2: Index + Middle extended.
-  if (
-    isIndexExtended &&
-    isMiddleExtended &&
-    !isRingExtended &&
-    !isPinkyExtended
-  ) {
-    return "2";
-  }
-
   // 3: Thumb + Index + Middle extended.
   if (
     isThumbExtended &&
@@ -89,6 +92,17 @@ export function predictGesture(keypoints: Keypoint[]): string | null {
     !isPinkyExtended
   ) {
     return "3";
+  }
+
+  // 2: Index + Middle extended.
+  if (
+    isIndexExtended &&
+    isMiddleExtended &&
+    !isRingExtended &&
+    !isPinkyExtended &&
+    !isThumbExtended
+  ) {
+    return "2";
   }
 
   // 4: Four fingers extended.

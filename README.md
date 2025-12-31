@@ -2,8 +2,7 @@
 
 > A Bulls and Cows number guessing game with [American Sign Language (ASL)](#what-is-asl) hand gesture recognition.
 
-Website Link: <URL HERE>  
-Video Demo: <URL HERE>
+Website Link: https://junelin2001.github.io/Bulls-and-cows-ASL/  
 
 ### What is ASL
 

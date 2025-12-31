@@ -14,9 +14,9 @@ const GuessedRow: React.FC<GuessedRowProps> = ({ guesses }) => {
           </p>
         </div>
       )}
-      {guesses.map((guess) => (
+      {guesses.map((guess, index) => (
         <div
-          key={guess.guessed}
+          key={`${guess.guessed}-${index}`}
           data-latest={guess.isLatest}
           className="flex items-center justify-between rounded border border-gray-700 bg-gray-800/50 p-3 data-[latest=true]:border-green-400 data-[latest=true]:bg-green-900/40 data-[latest=true]:ring-1 data-[latest=true]:ring-green-400/60"
         >

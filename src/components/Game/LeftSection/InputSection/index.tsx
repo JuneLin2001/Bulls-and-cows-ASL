@@ -24,6 +24,8 @@ const InputSection: React.FC<InputSectionProps> = ({
         currentGuess={currentGuess}
         error={error}
         lastDetectedGesture={lastDetectedGesture}
+        appendDigit={appendDigit}
+        submitGuess={submitGuess}
       />
       <InputKeypad
         currentGuess={currentGuess}
